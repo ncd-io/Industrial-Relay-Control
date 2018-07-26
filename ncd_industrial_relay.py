@@ -42,8 +42,8 @@ class Relay_Controller:
 		command = self.wrap_in_api([254, 99+relay, bank])
 		return self.process_control_command_return(self.send_command(command, 4))
 	
-	def turn_on_relay_flasher(self, flasher):
-		command = self.wrap_in_api([254, 45, flasher, 1])
+	def turn_on_relay_flasher(self, flasher, speed=1):
+		command = self.wrap_in_api([254, 45, flasher, speed])
 		return self.process_control_command_return(self.send_command(command, 4))
 		
 	def turn_off_relay_flasher(self, flasher):
@@ -51,7 +51,7 @@ class Relay_Controller:
 		return self.process_control_command_return(self.send_command(command, 4))
 		
 	def set_flasher_speed(self, speed):
-		command = self.wrap_in_api([254, 45, 0, 5])
+		command = self.wrap_in_api([254, 45, 0, speed])
 		return self.process_control_command_return(self.send_command(command, 4))
 			
 	def start_relay_timer(self, timer, hours, minutes, seconds, relay):
