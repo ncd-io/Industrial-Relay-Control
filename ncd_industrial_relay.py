@@ -68,6 +68,12 @@ class Relay_Controller:
 		command = self.wrap_in_api([254, 44, lsb, msb])
 		return self.process_read_command_return(self.send_command(command, 4))
 		
+	def get_relay_status_by_index_fusion(self, relay):
+		lsb = relay-1 & 255
+		msb = relay >> 8
+		command = self.wrap_in_api([254, 144, lsb, msb])
+		return self.process_read_command_return(self.send_command(command, 4))
+		
 	def read_single_ad8(self, channel):
 	#TODO read back single integer
 		command = self.wrap_in_api([254, 149+channel])
@@ -107,7 +113,8 @@ class Relay_Controller:
 		return data
 		
 	def send_command(self, command, bytes_back):
-		command = self.convert_data(command)
+# 		The following line is causing problems and has been commented out until further study.
+# 		command = self.convert_data(command)
 		if self.combus_type == 'serial':
 			self.combus.write(command)
 			return self.combus.read(bytes_back)
