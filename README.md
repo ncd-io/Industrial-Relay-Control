@@ -106,7 +106,10 @@ get_relay_bank_status(bank)
 >255 means all relays are on. 0 means all relays are off. 9 means relays 1 and 4 are on.
 
 get_relay_status_by_index(relay)
->Returns the status of a single relay. The relay argument is an integer from 1-512.
+>Returns the status of a single relay. The relay argument is an integer from 1-512. This command does not work with Fusion.
+
+get_relay_status_by_index_fusion(relay)
+>Returns the status of a single relay. The relay argument is an integer from 1-512. This command only works with Fusion
 
 get_relay_status_by_bank(relay, bank)
 >Returns the status of a specific relay in a specific bank. The relay argument will be an integer from 1-8.
