@@ -1,13 +1,11 @@
-# ProXR-Fusion-Taralist
+# ProXR
 
 ## What This Library is For
 
->This library is for any ProXR, Fusion, or Taralist board and any Relay Expansion Board that can be connected to them.
+>This library is for any ProXR board and any Relay Expansion Board that can be connected to them.
 >This does not include UXP Expansion boards with things such as ADC, Contact Closure, or Potentiometers.
 >Below are some links to pertinent products:
->Fusion https://store.ncd.io/?fwp_main_facet=ncd-industrial&fwp_product_type=relay-controllers&fwp_series=fusion
 >ProXR https://store.ncd.io/?fwp_main_facet=ncd-industrial&fwp_product_type=relay-controllers&fwp_series=proxr
->Taralist https://store.ncd.io/?fwp_main_facet=ncd-industrial&fwp_product_type=relay-controllers&fwp_series=taralist
 
 ## About This Library
 
