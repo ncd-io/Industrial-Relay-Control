@@ -254,7 +254,7 @@ class Relay_Controller:
 	# 170 5 254 56 3 104 24 104 - hours 103 + timer
 	# 170 5 254 56 3 120 98 194 - minutes 119 +timer
 	#                           - seconds 135 + timer
-	
+
 	# def reactor_set_timer(self, what, timer, seconds = 0, minutes = 0, hours = 0):
 	# case = {
 	#   'seconds': lambda x: x * 5,
@@ -268,4 +268,8 @@ class Relay_Controller:
 
 	def reactor_read_timers_remaining(self):
 		command = self.wrap_in_api([233, 106, 3])
+		return self.process_control_command_return(self.send_command(command, 32))
+
+	def lantronix_read_amps(self):
+		command = self.wrap_in_api([188, 50, 10, 84, 146, 106, 1, 1, 6, 0, 0, 4, 85, 19])
 		return self.process_control_command_return(self.send_command(command, 32))
