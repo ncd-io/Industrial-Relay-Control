@@ -1,3 +1,4 @@
+
 class Relay_Controller:
 	def __init__(self, combus, kwargs = {}):
 		self.__dict__.update(kwargs)
@@ -249,9 +250,11 @@ class Relay_Controller:
 		timer = int(timer) + 103
 		command = self.wrap_in_api([254, 56, 3, timer, hours])
 		return self.process_control_command_return(self.send_command(command, 4))
+	# Timer info from reactor
 	# 170 5 254 56 3 104 24 104 - hours 103 + timer
 	# 170 5 254 56 3 120 98 194 - minutes 119 +timer
 	#                           - seconds 135 + timer
+	
 	# def reactor_set_timer(self, what, timer, seconds = 0, minutes = 0, hours = 0):
 	# case = {
 	#   'seconds': lambda x: x * 5,
