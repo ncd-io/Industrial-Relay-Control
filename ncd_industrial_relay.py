@@ -21,10 +21,22 @@ class Relay_Controller:
 	def turn_on_relay_by_index(self, relay):
 		lsb = relay-1 & 255
 		msb = relay >> 8
-		command = self.wrap_in_api([254,148,lsb,msb])
+		command = self.wrap_in_api([254,48,lsb,msb])
 		return self.process_control_command_return(self.send_command(command, 4))
 
 	def turn_off_relay_by_index(self, relay):
+		lsb = relay-1 & 255
+		msb = relay >> 8
+		command = self.wrap_in_api([254,47,lsb,msb])
+		return self.process_control_command_return(self.send_command(command, 4))
+	
+	def fusion_turn_on_relay_by_index(self, relay):
+		lsb = relay-1 & 255
+		msb = relay >> 8
+		command = self.wrap_in_api([254,148,lsb,msb])
+		return self.process_control_command_return(self.send_command(command, 4))
+
+	def fusion_turn_off_relay_by_index(self, relay):
 		lsb = relay-1 & 255
 		msb = relay >> 8
 		command = self.wrap_in_api([254,147,lsb,msb])
