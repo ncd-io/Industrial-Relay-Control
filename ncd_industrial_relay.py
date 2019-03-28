@@ -29,7 +29,7 @@ class Relay_Controller:
 		msb = relay >> 8
 		command = self.wrap_in_api([254,47,lsb,msb])
 		return self.process_control_command_return(self.send_command(command, 4))
-	
+
 	def fusion_turn_on_relay_by_index(self, relay):
 		lsb = relay-1 & 255
 		msb = relay >> 8
@@ -160,9 +160,9 @@ class Relay_Controller:
 		bytes_back = self.check_bytes_back(data)
 		checksum = self.check_checksum(data)
 		if handshake and bytes_back and checksum:
-			return True, self.hex_to_decimal(data)
+			return [True, self.hex_to_decimal(data)]
 		else:
-			return False
+			return [False, 0]
 
 	def process_read_command_return(self, data):
 		handshake = self.check_handshake(data)
