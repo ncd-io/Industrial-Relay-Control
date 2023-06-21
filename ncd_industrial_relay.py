@@ -152,7 +152,7 @@ class Relay_Controller:
 			# print command
 			# print bytearray(command)
 			self.combus.send(bytearray(command))
-			return self.combus.recv(32)
+			return self.combus.recv(bytes_back)
 
 	def process_control_command_return(self, data):
 		# print(data).encode('hex');
