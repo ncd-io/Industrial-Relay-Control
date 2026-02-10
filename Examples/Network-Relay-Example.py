@@ -1,7 +1,7 @@
 #import the pyserial module
 import socket
 import ncd_industrial_relay
-
+import time
 
 #set up your socket with the desired settings.
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -24,7 +24,19 @@ print(board1.get_relay_status_by_index(1))
 print(board1.get_relay_status_by_index(2))
 
 #close the interface, not necessary here but you may need to in your application
-sock.close()
+try:
+	print("Shutting down socket")
+	sock.shutdown(socket.SHUT_RDWR)
+except:
+    pass
+try:
+	print("Closing socket")
+	sock.close()
+except:
+    pass
+
+# small sleep or delay to ensure the socket is closed and the OS has time to clean up the connection.
+time.sleep(.1)
 
 #you can renew or replace your communication interface with new settings if desired.
 #serial_port = serial.Serial('COM27', baudrate=115200, bytesize=8, stopbits=1, timeout=.5)
